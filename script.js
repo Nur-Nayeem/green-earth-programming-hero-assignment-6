@@ -1,6 +1,5 @@
 const categoryList = document.getElementById("category-list")
 
-
 const loadCategory = () => {
     fetch("https://openapi.programming-hero.com/api/categories")
         .then(res => res.json())
@@ -20,5 +19,8 @@ const displayCategory = (categories) => {
 
     });
 }
+
+
+
 
 
