@@ -20,6 +20,10 @@
             font-family: "Inter", sans-serif;
         }
 
+        body {
+            background-color: #f0fdf4;
+        }
+
         :root {
             --primary: #15803D;
             --secondery-bg: #CFF0DC;
@@ -84,7 +88,36 @@
             </figure>
 
         </section>
+
+
+        <!-- Choose Tree section  -->
+
+        <section class="container mx-auto my-24">
+            <h2 class="text-center text-3xl font-semibold text-[var(--dark)] mb-10">Choose Your Trees</h2>
+            <div class="grid grid-cols-6">
+                <!-- category -->
+                <div class="col-span-1 border h-screen overflow-x-hidden">
+                    <h3 class="text-xl font-semibold mb-2">Categories</h3>
+                    <ul class="text-[var(--dark)] flex flex-col gap-2">
+                        <li class="p-2 cursor-pointer bg-[var(--primary)] text-white">All Trees</li>
+
+                        <ul id="category-list" class="text-[var(--dark)] flex flex-col gap-2">
+                            <!-- rest of list  -->
+                        </ul>
+                    </ul>
+                </div>
+
+                <div class="col-span-4 border h-screen">
+                    <!-- tree selling section  -->
+                </div>
+                <div class="col-span-1 border h-screen">
+                    <!-- card section  -->
+                </div>
+            </div>
+        </section>
+
     </main>
+    <script src="./script.js"></script>
 </body>
 
 </html>
