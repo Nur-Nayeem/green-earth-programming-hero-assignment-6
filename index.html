@@ -22,7 +22,9 @@
 
         :root {
             --primary: #15803D;
+            --secondery-bg: #CFF0DC;
             --secondery-btn-color: #FACC15;
+            --dark: #1F2937;
         }
     </style>
     <title>Green Earth</title>
@@ -60,6 +62,29 @@
                 Tree</button>
         </nav>
     </header>
+
+    <main>
+        <!-- hero section  -->
+        <section class="bg-[var(--secondery-bg)] flex w-full justify-between pt-5">
+            <figure class="hidden md:flex items-end">
+                <img src="./assets/hero-leaf1.png" alt="">
+            </figure>
+            <div
+                class="flex flex-col items-center h-full my-auto text-[var(--dark)] max-w-max mx-auto md:max-w-2xl text-center py-6 px-3">
+                <h1 class="text-5xl font-bold ">Plant a Tree, Grow a Future</h1>
+                <p class="font-normal mb-6 mt-2">Join our mission to plant 1 million trees and make the Earth greener
+                    for
+                    future
+                    generations.</p>
+                <button class="bg-[var(--secondery-btn-color)] text-[var(--primary)] py-3 px-5 rounded-full">Get
+                    Involved</button>
+            </div>
+            <figure class="hidden md:flex items-end">
+                <img src="./assets/hero-leaf2.png" alt="">
+            </figure>
+
+        </section>
+    </main>
 </body>
 
 </html>
