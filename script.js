@@ -1,8 +1,10 @@
 const categoryList = document.getElementById("category-list")
 const treeContainer = document.getElementById("tree-container")
 const allCategory = document.getElementById("all-category")
+const cartSection = document.getElementById("cart-section")
+const totalPriceSection = document.getElementById("total-price-section");
 
-
+const cartArray = [];
 
 const loadCategory = () => {
     fetch("https://openapi.programming-hero.com/api/categories")
@@ -25,7 +27,7 @@ const displayCategory = (categories) => {
 }
 
 
-const loadPlants = () => {
+const loadAllPlants = () => {
     allCategory.classList.add("bg-[var(--primary)]", "text-white")
     fetch("https://openapi.programming-hero.com/api/plants")
         .then(res => res.json())
@@ -35,7 +37,7 @@ const loadPlants = () => {
         )
 }
 
-loadPlants()
+loadAllPlants()
 
 
 
@@ -50,22 +52,21 @@ const loadByCatergoryPlants = (id) => {
 const displayAllPlants = (allPlants) => {
     treeContainer.innerHTML = ""
     allPlants.forEach(plant => {
-        // console.log(plant);
         treeContainer.innerHTML += `
-            <div class=" p-3 bg-white rounded-lg text-[var(--dark)] h-96 py-4 flex flex-col justify-between">
+            <div id="plant-${plant.id}" class=" p-3 bg-white rounded-lg text-[var(--dark)] h-max py-4 flex flex-col justify-between">
                     <div>
                         <figure class="w-full h-44">
                             <img class="h-full w-full" src="${plant.image}" alt="">
                         </figure>
                         <div class="mt-3">
                             <h4 class="font-semibold">${plant.name}</h4>
-                            <p class="my-2 text-sm text-justify">${plant.description.slice(0, 98)}</p>
+                            <p class="my-2 text-sm text-justify">${plant.description.slice(0, 80)}</p>
                         </div>
                     </div>
                     <div>
                            <div class="flex justify-between w-full mb-4 font-semibold">
                                 <span class="bg-[#DCFCE7] px-3 py-1 rounded-full">${plant.category}</span>
-                                <span>৳${plant.price}</span>
+                                <span>৳<span>${plant.price}</span></span>
                              </div>
                              <button class="w-full py-3 font-medium text-white rounded-full bg-[var(--primary)]">Add to
                             Cart</button>
@@ -81,7 +82,7 @@ allCategory.addEventListener("click", () => {
     for (let li of categoryList.children) {
         li.classList.remove("bg-[var(--primary)]", "text-white")
     }
-    loadPlants()
+    loadAllPlants()
 })
 
 
@@ -99,6 +100,63 @@ categoryList.addEventListener("click", (e) => {
     }
 
 })
+
+
+treeContainer.addEventListener("click", (e) => {
+    if (e.target.localName === "button") {
+        let id = e.target.parentNode.parentNode.id
+        let name = e.target.parentNode.parentNode.children[0].children[1].children[0].innerText;
+        let price = Number(e.target.parentNode.children[0].children[1].children[0].innerText);
+        console.log(price);
+
+        const isPresent = cartArray.find(obj => id === obj.id)
+        if (isPresent === undefined) {
+            cartArray.push({
+                id: id,
+                name: name,
+                price: price,
+                quantity: 1,
+                total: price
+            })
+        }
+        else {
+            cartArray.forEach(obj => {
+                if (obj.id === id) {
+                    obj.quantity++;
+                    obj.total += price;
+                }
+
+            })
+        }
+
+
+        console.log(cartArray);
+
+        displayAddToCartCards(cartArray)
+
+
+    }
+
+})
+
+
+const displayAddToCartCards = (cartArray) => {
+    cartSection.innerHTML = ""
+    cartArray.forEach(cart => {
+        cartSection.innerHTML += `
+        <div class="flex gap-2 items-center justify-between p-3 bg-[#f0fdf4] rounded-lg">
+                <div class="flex flex-col gap-1">
+                    <h4 class="font-semibold">${cart.name}</h4>
+                    <p class="font-light">৳${cart.price} x ${cart.quantity}</p>
+                </div>
+            <i class="fa-solid fa-xmark"></i>
+        </div>
+    
+    `
+    })
+
+
+}
 
 // console.log(categoryList.children);
 
