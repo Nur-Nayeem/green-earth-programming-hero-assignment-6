@@ -31,7 +31,7 @@ const loadPlants = () => {
         )
 }
 
-loadPlants()
+// loadPlants()
 
 const displayAllPlants = (allPlants) => {
     allPlants.forEach(plant => {
