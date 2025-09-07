@@ -4,7 +4,7 @@ const allCategory = document.getElementById("all-category")
 const cartSection = document.getElementById("cart-section")
 const totalPriceSection = document.getElementById("total-price-section");
 const detailPlantContainer = document.getElementById("details-plant-container");
-
+const formBtn = document.getElementById("form-btn")
 
 let cartArray = [];
 
@@ -78,7 +78,7 @@ const displayAllPlants = (allPlants) => {
                                 <span class="bg-[#DCFCE7] px-3 py-1 rounded-full">${plant.category}</span>
                                 <span>৳<span>${plant.price}</span></span>
                              </div>
-                             <button class="w-full py-3 font-medium text-white rounded-full bg-[var(--primary)]">Add to
+                             <button class="w-full py-3 font-medium text-white rounded-full bg-[var(--primary)] cursor-pointer">Add to
                             Cart</button>
                     </div>
                 </div>
@@ -161,7 +161,7 @@ const displayAddToCartCards = (cartArray) => {
                     <h4 class="font-semibold">${cart.name}</h4>
                     <p class="font-light">৳${cart.price} x ${cart.quantity}</p>
                 </div>
-            <i onclick="deleteCart('${cart.id}')" class="fa-solid fa-xmark"></i>
+            <i onclick="deleteCart('${cart.id}')" class="fa-solid fa-xmark cursor-pointer"></i>
         </div>
     
     `
@@ -234,6 +234,23 @@ const showError = (id) => {
      <div class="h-[75vh] col-span-3 flex items-center justify-center text-red-600">Something went wrong</div>
     `
 }
+
+formBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    const name = e.target.parentNode.children[0].value;
+    const email = e.target.parentNode.children[0].value;
+    const donated = e.target.parentNode.children[2].value;
+
+    if ((name || email) && donated !== 'Number of Trees') {
+        alert(`Thank you for donating ${donated},   ${name ? name : email}!`)
+    }
+    e.target.parentNode.children[0].value = ""
+    e.target.parentNode.children[1].value = ""
+    e.target.parentNode.children[2].value = "Number of Trees";
+
+
+})
+
 
 
 loader('tree-container')

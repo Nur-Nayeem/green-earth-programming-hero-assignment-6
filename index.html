@@ -68,7 +68,9 @@
                 <li><a href="#">Gallery</a></li>
                 <li><a href="#">Plant a Tree</a></li>
             </ul>
-            <button class="bg-[var(--secondery-btn-color)] text-[var(--primary)] py-3 px-5 rounded-full">Plant a
+            <button
+                class="bg-[var(--secondery-btn-color)] text-[var(--primary)] py-3 px-5 rounded-full cursor-pointer">Plant
+                a
                 Tree</button>
         </nav>
     </header>
@@ -86,7 +88,8 @@
                     for
                     future
                     generations.</p>
-                <button class="bg-[var(--secondery-btn-color)] text-[var(--primary)] py-3 px-5 rounded-full">Get
+                <button
+                    class="bg-[var(--secondery-btn-color)] text-[var(--primary)] py-3 px-5 rounded-full cursor-pointer">Get
                     Involved</button>
             </div>
             <figure class="hidden md:flex items-end">
@@ -136,7 +139,8 @@
 
             <dialog id="detailsPlant" class="modal modal-bottom sm:modal-middle flex flex-col justify-center">
                 <form method="dialog">
-                    <button><i class="fa-regular fa-circle-xmark text-4xl text-white"></i></button>
+                    <button class="cursor-pointer"><i
+                            class="fa-regular fa-circle-xmark text-4xl text-white"></i></button>
                 </form>
                 <div class="modal-box" id="details-plant-container">
 
@@ -174,15 +178,15 @@
             <h2 class="text-center text-3xl font-semibold text-[var(--dark)] mb-10">Our Impact</h2>
             <div class="container mx-auto flex flex-col gap-5 md:flex-row justify-between items-center px-3">
                 <div class=" bg-white text-center w-full md:w-3/12 p-10 rounded-xl shadow-sm">
-                    <h3 class="text-[var(--primary)] text-3xl">500K+</h3>
+                    <h3 class="text-[var(--primary)] text-3xl font-semibold">500K+</h3>
                     <p class="text-[#1F293780]">Trees Planted</p>
                 </div>
                 <div class="bg-white text-center w-full md:w-3/12 py-10 px-10 rounded-xl shadow-sm">
-                    <h3 class="text-[var(--primary)] text-3xl">120+</h3>
+                    <h3 class="text-[var(--primary)] text-3xl font-semibold">120+</h3>
                     <p class="text-[#1F293780]">Communities Involved</p>
                 </div>
                 <div class="bg-white text-center w-full md:w-3/12 py-10 px-10 rounded-xl shadow-sm">
-                    <h3 class="text-[var(--primary)] text-3xl">30+</h3>
+                    <h3 class="text-[var(--primary)] text-3xl font-semibold">30+</h3>
                     <p class="text-[#1F293780]">Countries Reached</p>
                 </div>
             </div>
@@ -193,18 +197,19 @@
         <!-- plant tree today section  -->
         <section class="bg-[#166534] py-24">
             <h2 class="text-center text-3xl font-semibold text-white mb-10">Plant a Tree Today</h2>
-            <form action=""
+            <form method=""
                 class="p-10 bg-[var(--primary)] flex flex-col gap-3 w-3/4 md:w-2/4 xl:w-1/4 mx-auto rounded-xl">
                 <input type="text" placeholder="Your Name" class="input w-full focus:outline-none border-0" />
                 <input type="email" placeholder="Your Email Address" class="input w-full focus:outline-none border-0" />
                 <select class="select w-full focus:outline-none border-0">
                     <option disabled selected>Number of Trees</option>
-                    <option>৳100 for 1 Trees</option>
+                    <option>৳100 for 1 Tree</option>
                     <option>৳200 for 2 Trees</option>
                     <option>৳500 for 5 Trees</option>
                     <option>৳1000 for 10 Trees</option>
                 </select>
-                <button class="bg-[var(--secondery-btn-color)] text-[var(--primary)] py-3 px-5 rounded-full">Get
+                <button id="form-btn"
+                    class="bg-[var(--secondery-btn-color)] text-[var(--primary)] py-3 px-5 rounded-full cursor-pointer">Get
                     Involved</button>
             </form>
         </section>
