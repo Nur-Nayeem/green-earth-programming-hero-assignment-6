@@ -13,8 +13,11 @@ const loadCategory = () => {
         .then(res => res.json())
         .then(category => {
             displayCategory(category.categories)
-        }
-        )
+        }).catch(error => {
+            showError("category-list")
+            console.log(error);
+
+        })
 }
 loadCategory()
 
@@ -33,8 +36,11 @@ const loadAllPlants = () => {
         .then(res => res.json())
         .then(data => {
             displayAllPlants(data.plants)
-        }
-        )
+        }).catch(error => {
+            showError("tree-container")
+            console.log(error);
+
+        })
 }
 
 
@@ -46,6 +52,10 @@ const loadByCatergoryPlants = (id) => {
         .then(res => res.json())
         .then(data => {
             displayAllPlants(data.plants)
+        }).catch(error => {
+            showError("tree-container")
+            console.log(error);
+
         })
 }
 
@@ -191,7 +201,11 @@ const displayDetailePlant = (id) => {
         .then(plantDetails => {
             displayDetailsPlant(plantDetails.plants);
         })
+        .catch(error => {
+            showError("details-plant-container")
+            console.log(error);
 
+        })
 
 
     detailsPlant.showModal()
@@ -214,7 +228,12 @@ const displayDetailsPlant = (plants) => {
 
 }
 
-
+const showError = (id) => {
+    const container = document.getElementById(id);
+    container.innerHTML = `
+     <div class="h-[75vh] col-span-3 flex items-center justify-center text-red-600">Something went wrong</div>
+    `
+}
 
 
 loader('tree-container')
