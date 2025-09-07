@@ -3,6 +3,8 @@ const treeContainer = document.getElementById("tree-container")
 const allCategory = document.getElementById("all-category")
 const cartSection = document.getElementById("cart-section")
 const totalPriceSection = document.getElementById("total-price-section");
+const detailPlantContainer = document.getElementById("details-plant-container");
+
 
 let cartArray = [];
 
@@ -57,7 +59,7 @@ const displayAllPlants = (allPlants) => {
                             <img class="h-full w-full" src="${plant.image}" alt="">
                         </figure>
                         <div class="mt-3">
-                            <h4 class="font-semibold">${plant.name}</h4>
+                            <h4 onclick="displayDetailePlant('${plant.id}')" class="font-semibold cursor-pointer">${plant.name}</h4>
                             <p class="my-2 text-sm text-justify">${plant.description.slice(0, 80)}</p>
                         </div>
                     </div>
@@ -181,6 +183,39 @@ const loader = (id) => {
         </div>
     `
 }
+
+
+const displayDetailePlant = (id) => {
+    loader('details-plant-container')
+    fetch(`https://openapi.programming-hero.com/api/plant/${id}`).then(res => res.json())
+        .then(plantDetails => {
+            displayDetailsPlant(plantDetails.plants);
+        })
+
+
+
+    detailsPlant.showModal()
+
+}
+
+const displayDetailsPlant = (plants) => {
+    detailPlantContainer.innerHTML = `
+        <div id="modalContainer" class="w-full">
+                        <img class="my-4 w-full h-96" src="${plants.image}" alt="plant image">
+                        <h2 class="text-3xl font-bold mb-4">${plants.name}</h2>
+                        <div class="flex justify-between w-full mb-4 font-semibold">
+                            <span class="bg-[#DCFCE7] px-3 py-1 rounded-3xl text-2xl">${plants.category}</span>
+                            <span class="text-3xl">৳<span>${plants.price}</span></span>
+                        </div>
+
+                        <p class="text-lg text-justify">${plants.description}</p>
+                    </div>
+    `
+
+}
+
+
+
 
 loader('tree-container')
 loadAllPlants()
