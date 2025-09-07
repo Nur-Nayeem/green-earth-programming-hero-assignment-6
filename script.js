@@ -4,7 +4,7 @@ const allCategory = document.getElementById("all-category")
 const cartSection = document.getElementById("cart-section")
 const totalPriceSection = document.getElementById("total-price-section");
 
-const cartArray = [];
+let cartArray = [];
 
 const loadCategory = () => {
     fetch("https://openapi.programming-hero.com/api/categories")
@@ -141,24 +141,37 @@ treeContainer.addEventListener("click", (e) => {
 
 
 const displayAddToCartCards = (cartArray) => {
+    totalPriceSection.innerHTML = ''
+    let totalAmount = 0
     cartSection.innerHTML = ""
     cartArray.forEach(cart => {
         cartSection.innerHTML += `
-        <div class="flex gap-2 items-center justify-between p-3 bg-[#f0fdf4] rounded-lg">
+        <div id="${cart.id}" class="flex gap-2 items-center justify-between p-3 bg-[#f0fdf4] rounded-lg">
                 <div class="flex flex-col gap-1">
                     <h4 class="font-semibold">${cart.name}</h4>
                     <p class="font-light">৳${cart.price} x ${cart.quantity}</p>
                 </div>
-            <i class="fa-solid fa-xmark"></i>
+            <i onclick="deleteCart('${cart.id}')" class="fa-solid fa-xmark"></i>
         </div>
     
     `
+        totalAmount += cart.total;
+        totalPriceSection.innerHTML = `
+             <h4>Total:</h4>
+             <h4>৳${totalAmount}</h4>
+        `
     })
-
-
 }
 
-// console.log(categoryList.children);
+
+const deleteCart = (id) => {
+    const filterCards = cartArray.filter(del => del.id !== id
+    )
+    console.log(filterCards);
+
+    cartArray = filterCards;
+    displayAddToCartCards(cartArray)
+}
 
 
 
