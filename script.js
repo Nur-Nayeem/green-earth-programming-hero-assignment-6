@@ -21,8 +21,6 @@ const displayCategory = (categories) => {
         categoryList.innerHTML += `
             <li id="${cat.id}" class="p-2 cursor-pointer hover:bg-[var(--primary)] hover:text-white">${cat.category_name}</li>
         `
-
-
     });
 }
 
@@ -37,11 +35,11 @@ const loadAllPlants = () => {
         )
 }
 
-loadAllPlants()
 
 
 
 const loadByCatergoryPlants = (id) => {
+    loader('tree-container')
     fetch(`https://openapi.programming-hero.com/api/category/${id}`)
         .then(res => res.json())
         .then(data => {
@@ -172,6 +170,20 @@ const deleteCart = (id) => {
     cartArray = filterCards;
     displayAddToCartCards(cartArray)
 }
+
+
+
+const loader = (id) => {
+    const container = document.getElementById(id);
+    container.innerHTML = `
+        <div class="flex justify-center items-center">
+            <span class="loading loading-bars loading-xl"></span>
+        </div>
+    `
+}
+
+loader('tree-container')
+loadAllPlants()
 
 
 
