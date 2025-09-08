@@ -65,7 +65,7 @@ const displayAllPlants = (allPlants) => {
         treeContainer.innerHTML += `
             <div id="plant-${plant.id}" class=" p-3 bg-white rounded-lg text-[var(--dark)] h-max py-4 flex flex-col justify-between">
                     <div>
-                        <figure class="w-full h-44">
+                        <figure class="w-full h-52">
                             <img class="h-full w-full" src="${plant.image}" alt="">
                         </figure>
                         <div class="mt-3">
