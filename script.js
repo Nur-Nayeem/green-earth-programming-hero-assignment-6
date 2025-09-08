@@ -76,7 +76,10 @@ const displayAllPlants = (allPlants) => {
                     <div>
                            <div class="flex justify-between w-full mb-4 font-semibold">
                                 <span class="bg-[#DCFCE7] px-3 py-1 rounded-full">${plant.category}</span>
-                                <span>৳<span>${plant.price}</span></span>
+                                <span>
+                                <i class="fa-solid fa-bangladeshi-taka-sign"></i>
+                                <span>${plant.price}</span>
+                                </span>
                              </div>
                              <button class="w-full py-3 font-medium text-white rounded-full bg-[var(--primary)] cursor-pointer">Add to
                             Cart</button>
@@ -116,7 +119,7 @@ treeContainer.addEventListener("click", (e) => {
     if (e.target.localName === "button") {
         let id = e.target.parentNode.parentNode.id
         let name = e.target.parentNode.parentNode.children[0].children[1].children[0].innerText;
-        let price = Number(e.target.parentNode.children[0].children[1].children[0].innerText);
+        let price = Number(e.target.parentNode.children[0].children[1].children[1].innerText);
         console.log(price);
 
         const isPresent = cartArray.find(obj => id === obj.id)
@@ -159,7 +162,7 @@ const displayAddToCartCards = (cartArray) => {
         <div id="${cart.id}" class="flex gap-2 items-center justify-between p-3 bg-[#f0fdf4] rounded-lg">
                 <div class="flex flex-col gap-1">
                     <h4 class="font-semibold">${cart.name}</h4>
-                    <p class="font-light">৳${cart.price} x ${cart.quantity}</p>
+                    <p class="text-gray-600"><i class="fa-solid fa-bangladeshi-taka-sign"></i>${cart.price} x ${cart.quantity}</p>
                 </div>
             <i onclick="deleteCart('${cart.id}')" class="fa-solid fa-xmark cursor-pointer"></i>
         </div>
@@ -215,15 +218,14 @@ const displayDetailePlant = (id) => {
 const displayDetailsPlant = (plants) => {
     detailPlantContainer.innerHTML = `
         <div id="modalContainer" class="w-full">
-                        <img class="my-4 w-full h-96" src="${plants.image}" alt="plant image">
-                        <h2 class="text-3xl font-bold mb-4">${plants.name}</h2>
-                        <div class="flex justify-between w-full mb-4 font-semibold">
-                            <span class="bg-[#DCFCE7] px-3 py-1 rounded-3xl text-2xl">${plants.category}</span>
-                            <span class="text-3xl">৳<span>${plants.price}</span></span>
-                        </div>
-
-                        <p class="text-lg text-justify">${plants.description}</p>
+                    <h2 class="text-3xl font-bold mb-4">${plants.name}</h2>
+                    <img class="my-4 w-full h-96" src="${plants.image}" alt="plant image">
+                    <div class="flex flex-col gap-3 text-xl">
+                        <p><b>Category: </b>${plants.category}</p>
+                        <p><b>Price: </b><i class="fa-solid fa-bangladeshi-taka-sign"></i><span>${plants.price}</span></span></p>
+                        <p class="text-lg text-justify"><b>Description: </b>${plants.description}</p>
                     </div>
+                </div>
     `
 
 }
