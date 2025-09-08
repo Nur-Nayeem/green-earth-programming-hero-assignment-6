@@ -70,11 +70,11 @@ const displayAllPlants = (allPlants) => {
                         </figure>
                         <div class="mt-3">
                             <h4 onclick="displayDetailePlant('${plant.id}')" class="font-semibold cursor-pointer">${plant.name}</h4>
-                            <p class="my-2 text-sm text-justify">${plant.description.slice(0, 80)}</p>
+                            <p class="my-2 text-sm text-justify text-[#00000080]">${plant.description.slice(0, 80)}</p>
                         </div>
                     </div>
                     <div>
-                           <div class="flex justify-between w-full mb-4 font-semibold">
+                           <div class="flex justify-between w-full mt-3 mb-4 font-semibold">
                                 <span class="bg-[#DCFCE7] px-3 py-1 rounded-full">${plant.category}</span>
                                 <span>
                                 <i class="fa-solid fa-bangladeshi-taka-sign"></i>
