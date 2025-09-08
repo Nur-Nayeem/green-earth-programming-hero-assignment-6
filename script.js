@@ -66,7 +66,7 @@ const displayAllPlants = (allPlants) => {
             <div id="plant-${plant.id}" class=" p-3 bg-white rounded-lg text-[var(--dark)] h-max py-4 flex flex-col justify-between">
                     <div>
                         <figure class="w-full h-52">
-                            <img class="h-full w-full" src="${plant.image}" alt="">
+                            <img class="h-full w-full rounded-lg" src="${plant.image}" alt="">
                         </figure>
                         <div class="mt-3">
                             <h4 onclick="displayDetailePlant('${plant.id}')" class="font-semibold cursor-pointer">${plant.name}</h4>
@@ -216,7 +216,7 @@ const displayDetailsPlant = (plants) => {
     detailPlantContainer.innerHTML = `
         <div id="modalContainer" class="w-full">
                     <h2 class="text-3xl font-bold mb-4">${plants.name}</h2>
-                    <img class="my-4 w-full h-96" src="${plants.image}" alt="plant image">
+                    <img class="my-4 w-full h-96 rounded-lg" src="${plants.image}" alt="plant image">
                     <div class="flex flex-col gap-3 text-xl">
                         <p><b>Category: </b>${plants.category}</p>
                         <p><b>Price: </b><i class="fa-solid fa-bangladeshi-taka-sign"></i><span>${plants.price}</span></span></p>
