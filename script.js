@@ -141,10 +141,7 @@ treeContainer.addEventListener("click", (e) => {
 
             })
         }
-
-
-        console.log(cartArray);
-
+        alert(`${name} is added to the cart successfully!`)
         displayAddToCartCards(cartArray)
 
 
