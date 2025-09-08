@@ -189,7 +189,7 @@ const loader = (id) => {
     const container = document.getElementById(id);
     container.innerHTML = `
         <div class="flex justify-center items-center">
-            <span class="loading loading-bars loading-xl"></span>
+             <span class="loading loading-spinner loading-xl"></span>
         </div>
     `
 }
